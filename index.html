@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клуб 404 - приватный интеллектуальный клуб</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f0f0f0;
+            --accent: #ff3366;
+            --dark-accent: #cc0044;
+            --light-gray: #f8f8f8;
+            --gray: #e0e0e0;
+            --dark-gray: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "404";
+            position: absolute;
+            font-size: 300px;
+            font-weight: 900;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto 0;
+        }
+        
+        .authors {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .author-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .author-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .author-header {
+            padding: 20px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .author-level {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .author-content {
+            padding: 20px;
+        }
+        
+        .author-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .author-link:hover {
+            text-decoration: underline;
+        }
+        
+        .pricing {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .pricing .section-title::after {
+            background-color: white;
+        }
+        
+        .savings {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .price small {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .price-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .price-card {
+            background-color: white;
+            color: var(--primary);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--accent);
+        }
+        
+        .price-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .price-card.featured::before {
+            height: 8px;
+        }
+        
+        .price-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .price-period {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .price-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-card.featured {
+                transform: none;
+            }
+        }
+		
+		.authors {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .author-content p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>КЛУБ 404 ⚡️</h1>
+            <p class="tagline">Старейший клуб приватной информации. Эксклюзивный контент от лучших авторов Рунета.</p>
+            <a href="#pricing" class="cta-button">Присоединиться</a>
+        </div>
+    </header>
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Эксперты и проекты клуба</h2>
+            <div class="authors">
+                <!-- Алексей Антонов -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Алексей Антонов</div>
+                            <div class="author-level">Основатель клуба, аналитик</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Автор уникальной системы аналитики с 15-летним опытом. Основные направления: 
+                        политический анализ, экономические прогнозы, стратегическое планирование. 
+                        Бесплатный уровень "Добрый читатель" дает доступ к базовым материалам, 
+                        а "Университет Антонова" раскрывает эксклюзивные кейсы и закрытые аналитические отчеты.</p>
+                    </div>
+                </div>
+
+                <!-- Стас Асафьев -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Стас Асафьев</div>
+                            <div class="author-level">Эксперт по продуктивности</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Автор бестселлера "Система эффективности 2.0", создатель методик тайм-менеджмента 
+                        для топ-менеджеров. В клубе публикует закрытые мастер-классы по управлению 
+                        личными ресурсами и эксклюзивные интервью с успешными предпринимателями.</p>
+                    </div>
+                </div>
+
+                <!-- CrimsonAlter – Analytics -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">CrimsonAlter – Analytics</div>
+                            <div class="author-level">Премиум-аналитика</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Ежедневные аналитические отчеты по финансовым рынкам и геополитике. 
+                        Глубокий анализ макроэкономических тенденций с прогнозами на квартал. 
+                        Эксклюзивные данные из закрытых источников и корпоративная аналитика.</p>
+                    </div>
+                </div>
+
+                <!-- Итоги недели с Кримсоном -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Итоги недели с Кримсоном</div>
+                            <div class="author-level">Еженедельный дайджест</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Анализ ключевых событий недели с прогнозами развития ситуаций. 
+                        Рейтинги персон недели, разбор информационных кампаний, 
+                        эксклюзивная статистика и инфографика.</p>
+                    </div>
+                </div>
+
+                <!-- Средство немассовой информации -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">СНМИ</div>
+                            <div class="author-level">Альтернативная аналитика</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Расследования и аналитика вне мейнстримной повестки. 
+                        Архив редких документов, расшифровки закрытых совещаний, 
+                        анализ теневых экономических процессов.</p>
+                    </div>
+                </div>
+
+                <!-- Marahovsky -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Marahovsky</div>
+                            <div class="author-level">Мастер слова</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Автор культовых текстов по социальной инженерии и политической риторике. 
+                        В клубе доступны эксклюзивные материалы по нейролингвистическому анализу, 
+                        техникам убеждения и работе с общественным мнением.</p>
+                    </div>
+                </div>
+
+                <!-- Лука Ебков -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Лука Ебков</div>
+                            <div class="author-level">Эксперт по медиааналитике</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Авторский разбор медийных персон и информационных войн. 
+                        Закрытые интервью с политическими технологами, 
+                        анализ электоральных стратегий и PR-кампаний.</p>
+                    </div>
+                </div>
+
+                <!-- Подкаст "Не выходя из комнаты" -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Mash Room</div>
+                            <div class="author-level">Политический подкаст</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Еженедельный анализ политических событий с участием 
+                        экспертов-практиков. Расширенные версии выпусков 
+                        с эксклюзивными комментариями доступны только участникам клуба.</p>
+                    </div>
+                </div>
+
+                <!-- Простая экономика -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Простая экономика</div>
+                            <div class="author-level">Финансовая аналитика</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Авторская методика объяснения сложных экономических процессов. 
+                        Закрытые вебинары по инвестициям, аналитика крипторынка, 
+                        персональные финансовые стратегии.</p>
+                    </div>
+                </div>
+
+                <!-- Туземный совет трудящихся -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">Туземный совет</div>
+                            <div class="author-level">Исторические исследования</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Уникальные документальные проекты о ключевых событиях истории. 
+                        Рассекреченные архивы, интервью с участниками событий, 
+                        анализ исторических параллелей.</p>
+                    </div>
+                </div>
+
+                <!-- RAZB0RKA -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <div>
+                            <div class="author-name">RAZB0RKA</div>
+                            <div class="author-level">Корпоративная аналитика</div>
+                        </div>
+                    </div>
+                    <div class="author-content">
+                        <p>Ежедневный анализ деятельности российских компаний. 
+                        Глубокий dive-in в финансовую отчетность, 
+                        прогнозы по развитию отраслей, эксклюзивные рейтинги.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <h2 class="section-title">Выберите свой тариф</h2>
+            <div class="savings">❗️Экономия при подписке на Клуб: 13 899 руб/месяц</div>
+            
+            <div class="price-cards">
+                <div class="price-card">
+                    <div class="price-name">⚡️ Неделя Клуба</div>
+                    <div class="price-period">Попробуйте на неделю</div>
+                    <div class="price">199₽ <small>/ неделя</small></div>
+                    <a href="https://t.me/tribute/app?startapp=sssv" class="cta-button" target="_blank">Подписаться</a>
+                </div>
+                
+                <div class="price-card featured">
+                    <div class="price-name">⭐️ Месяц Клуба</div>
+                    <div class="price-period">Самый популярный вариант</div>
+                    <div class="price">399₽ <small>/ месяц</small></div>
+                    <a href="https://t.me/tribute/app?startapp=srM4" class="cta-button" target="_blank">Подписаться</a>
+                </div>
+                
+                <div class="price-card">
+                    <div class="price-name">💎 1 ГОД Клуба</div>
+                    <div class="price-period">Максимальная выгода</div>
+                    <div class="price">4 699₽ <small>/ год</small></div>
+                    <a href="https://t.me/tribute/app?startapp=st2w" class="cta-button" target="_blank">Подписаться</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Клуб 404. Все права защищены.</p>
+            <p>Приватный интеллектуальный клуб для избранных.</p>
+        </div>
+    </footer>
+</body>
+</html>
