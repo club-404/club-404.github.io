@@ -276,6 +276,51 @@
             line-height: 1.7;
             color: var(--dark-gray);
         }
+		
+		.floating-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        animation: float 3s ease-in-out infinite;
+        transition: all 0.3s;
+    }
+    
+    .floating-button a {
+        background: var(--accent);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 8px 25px rgba(255,51,102,0.3);
+        transition: all 0.3s;
+    }
+    
+    .floating-button a:hover {
+        background: var(--dark-accent);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(255,51,102,0.4);
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    @media (max-width: 768px) {
+        .floating-button {
+            bottom: 20px;
+            right: 20px;
+        }
+        .floating-button a {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+        }
+    }
     </style>
 </head>
 <body>
@@ -483,7 +528,7 @@
                 <div class="price-card">
                     <div class="price-name">💎 1 ГОД Клуба</div>
                     <div class="price-period">Максимальная выгода</div>
-                    <div class="price">4 699₽ <small>/ год</small></div>
+                    <div class="price">4 499₽ <small>/ год</small></div>
                     <a href="https://t.me/tribute/app?startapp=st2w" class="cta-button" target="_blank">Подписаться</a>
                 </div>
             </div>
@@ -496,5 +541,8 @@
             <p>Приватный интеллектуальный клуб для избранных.</p>
         </div>
     </footer>
+	<div class="floating-button">
+    <a href="https://t.me/vladimir_aumm" target="_blank">💬 Задать вопрос</a>
+</div>
 </body>
 </html>
